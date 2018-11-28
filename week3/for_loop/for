@@ -1,0 +1,12 @@
+//Using an array example1
+const arr = ['cat', 'dog', 'fish'];
+for (i = 0; i < arr.length; i++) { 
+  console.log(arr[i])
+}
+
+//Example2
+var text="";
+for (i = 0; i < 5; i++) {
+  text += "The number is " + i + "\n";
+}
+console.log(text);
