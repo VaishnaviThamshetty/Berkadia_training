@@ -1,0 +1,34 @@
+// Pseudoclassical pattern
+/**
+ * Point a child's prototype to a parent's prototype
+ **/
+var ClassA = function() {
+    this.name = "class A";
+    this.surname="I am A"
+}
+ClassA.prototype.print = function() {
+    console.log(this.name);
+    console.log(this.surname);
+}
+var a = new ClassA();
+a.print();
+
+var inheritsFrom = function (child, parent) {
+    child.prototype = parent.prototype;
+};
+
+var ClassB = function() {
+    this.name = "class B";
+    this.surname = "I'm the child of A";
+}
+inheritsFrom(ClassB, ClassA);
+var b = new ClassB();
+b.print();
+
+var ClassC = function() {
+    this.name = "class C";
+    this.surname = "I'm the child of B and grandchild of A";
+}
+inheritsFrom(ClassC, ClassB);
+var c = new ClassC();
+c.print();
