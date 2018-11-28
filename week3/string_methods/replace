@@ -1,0 +1,21 @@
+/*The replace() method replaces a specified value with another value in a string:
+Example1*/
+str = "I like chocolates";
+var val = str.replace("chocolates", "cakes");
+console.log("Change in string after replacing is:"+val);
+
+//Example2-It is case-sensitive
+str = "I like chocolates";
+var val = str.replace("CHOCOLATES", "cakes");
+console.log("Change in string after replacing is:"+val);
+
+//Example3-This is case-insesitive
+str = "I like chocolates";
+var val = str.replace(/CHOCOLATES/i, "cakes");
+console.log("Change in string after replacing is:"+val);
+
+//Example4 /g is global match
+str = "I like chocolates and chocolates";
+var val = str.replace(/chocolates/g, "cakes");
+console.log("Change in string after replacing is:"+val);
+
