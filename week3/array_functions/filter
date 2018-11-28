@@ -1,0 +1,15 @@
+//Example1
+function isBigEnough(element, index, array) { 
+   return (element >= 10); 
+} 
+console.log("Example1");
+var passed = [12, 5, 8, 130, 44].filter(isBigEnough); 
+console.log("Test Value : " + passed );  
+
+//Example2
+function isSmallEnough(element, index, array) { 
+    return (element <= 10); 
+ } 
+ console.log("Example2");
+ var passed = [1, 6, 8, 41, 234].filter(isSmallEnough); 
+ console.log("Test Value : " + passed );  
