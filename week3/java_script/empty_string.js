@@ -1,0 +1,3 @@
+var d = "";
+console.log(d);
+console.log(typeof d); 
