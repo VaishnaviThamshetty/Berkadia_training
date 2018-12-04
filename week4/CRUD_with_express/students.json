@@ -1,0 +1,17 @@
+[
+        {
+            "id":355,
+            "name":"Vaishu",
+            "branch":"CSE"
+        },
+        {
+            "id":354,
+            "name":"Anjali",
+            "branch":"CSE"
+        },
+        {
+            "id":345,
+            "name":"Kuttu",
+            "branch":"ECE"
+        }
+    ]
