@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<body>
+    <div class="container">
+        <h1>Data</h1>
+        <form name="radio" align='center' action="/" method="post">
+            <div class="row">
+                <textarea name="content" id="content" cols="30" rows="10" class="form-control" placeholder="Enter notes"></textarea>
+            </div>
+            <br><br>
+            <div class="row">
+                <div class="col-sm-3">
+                    <input type="radio" name="Operation" value="create" class="form-control">Create <br>
+                </div>
+                <div class="col-sm-3">
+                    <input type="radio" name="Operation" value="read" class="form-control"> Read <br>
+                </div>
+                <div class="col-sm-3">
+                    <input type="radio" name="Operation" value="update" class="form-control"> Update<br>
+                </div>
+                <div class="col-sm-3">
+                    <input type="radio" name="Operation" value="delete" class="form-control"> Delete <br>
+                </div>
+            </div>
+            <br><br>
+            <div class="row">
+                <input type="submit" value="SUBMIT" class="btn btn-primary">
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>
