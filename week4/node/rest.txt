@@ -1,0 +1,99 @@
+REST
+REST is acronym for REpresentational State Transfer. It is architectural style for distributed hypermedia systems and was first presented by Roy Fielding in 2000 in his famous dissertation.
+Like any other architectural style, REST also does have it’s own 6 guiding constraints which must be satisfied if an interface needs to be referred as RESTful. These principles are listed below.
+Guiding Principles of REST
+1.Client–server – By separating the user interface concerns from the data storage concerns, we improve the portability of the user interface across multiple platforms and improve scalability by simplifying the server components.
+2.Stateless – Each request from client to server must contain all of the information necessary to understand the request, and cannot take advantage of any stored context on the server. Session state is therefore kept entirely on the client.
+3.Cacheable – Cache constraints require that the data within a response to a request be implicitly or explicitly labeled as cacheable or non-cacheable. If a response is cacheable, then a client cache is given the right to reuse that response data for later, equivalent requests.
+4.Uniform interface – By applying the software engineering principle of generality to the component interface, the overall system architecture is simplified and the visibility of interactions is improved. In order to obtain a uniform interface, multiple architectural constraints are needed to guide the behavior of components. REST is defined by four interface constraints: identification of resources; manipulation of resources through representations; self-descriptive messages; and, hypermedia as the engine of application state.
+5.Layered system – The layered system style allows an architecture to be composed of hierarchical layers by constraining component behavior such that each component cannot “see” beyond the immediate layer with which they are interacting.
+6.Code on demand (optional) – REST allows client functionality to be extended by downloading and executing code in the form of applets or scripts. This simplifies clients by reducing the number of features required to be pre-implemented.
+
+REST and HTTP are not same 
+A lot of people prefer to compare HTTP with REST. REST and HTTP are not same.
+REST != HTTP
+Though, because REST also intend to make web (internet) more streamline and standard, he advocate to use REST principles more strictly. And that’s from where people try to start comparing REST with web (HTTP). Roy fielding, in his dissertation, nowhere mentioned any implementation directive – including any protocol preference and HTTP. Till the time, you are honoring the 6 guiding principles of REST, you can call your interface RESTful.
+In simplest words, in the REST architectural style, data and functionality are considered resources and are accessed using Uniform Resource Identifiers (URIs). The resources are acted upon by using a set of simple, well-defined operations. The clients and servers exchange representations of resources by using a standardized interface and protocol – typically HTTP.
+Resources are decoupled from their representation so that their content can be accessed in a variety of formats, such as HTML, XML, plain text, PDF, JPEG, JSON, and others. Metadata about the resource is available and used, for example, to control caching, detect transmission errors, negotiate the appropriate representation format, and perform authentication or access control.And most importantly, every interaction with a resource is stateless.
+
+REST Resource Naming Best Practices
+A)Use nouns to represent resources
+RESTful URI should refer to a resource that is a thing (noun) instead of referring to an action (verb) because nouns have properties which verbs do not have – similar to resources have attributes. Some examples of a resource are:
+Users of the system
+User Accounts
+Network Devices etc.
+and their resource URIs can be designed as below:
+http://api.example.com/device-management/managed-devices 
+http://api.example.com/device-management/managed-devices/{device-id} 
+http://api.example.com/user-management/users/
+http://api.example.com/user-management/users/{id}
+For more clarity, let’s divide the resource archetypes into four categories (document, collection, store and controller) and then you should always target to put a resource into one archetype and then use it’s naming convention consistently. For uniformity’s sake, resist the temptation to design resources that are hybrids of more than one archetype.
+1)document
+A document resource is a singular concept that is akin to an object instance or database record. In REST, you can view it as a single resource inside resource collection. A document’s state representation typically includes both fields with values and links to other related resources.
+Use “singular” name to denote document resource archetype.
+http://api.example.com/device-management/managed-devices/{device-id}
+http://api.example.com/user-management/users/{id}
+http://api.example.com/user-management/users/admin
+2)collection
+A collection resource is a server-managed directory of resources. Clients may propose new resources to be added to a collection. However, it is up to the collection to choose to create a new resource, or not. A collection resource chooses what it wants to contain and also decides the URIs of each contained resource.
+Use “plural” name to denote collection resource archetype.
+http://api.example.com/device-management/managed-devices
+http://api.example.com/user-management/users
+http://api.example.com/user-management/users/{id}/accounts
+3)store
+A store is a client-managed resource repository. A store resource lets an API client put resources in, get them back out, and decide when to delete them. A store never generates new URIs. Instead, each stored resource has a URI that was chosen by a client when it was initially put into the store.
+Use “plural” name to denote store resource archetype.
+http://api.example.com/cart-management/users/{id}/carts
+http://api.example.com/song-management/users/{id}/playlists
+4)controller
+A controller resource models a procedural concept. Controller resources are like executable functions, with parameters and return values; inputs and outputs.
+Use “verb” to denote controller archetype.
+http://api.example.com/cart-management/users/{id}/cart/checkout
+http://api.example.com/song-management/users/{id}/playlist/play
+B)Consistency is the key
+Use consistent resource naming conventions and URI formatting for minimum ambiguily and maximum readability and maintainability. You may implement below design hints to achieve consistency:
+1)Use forward slash (/) to indicate a hierarchical relationships
+The forward slash (/) character is used in the path portion of the URI to indicate a hierarchical relationship between resources. e.g.
+http://api.example.com/device-management
+http://api.example.com/device-management/managed-devices
+http://api.example.com/device-management/managed-devices/{id}
+http://api.example.com/device-management/managed-devices/{id}/scripts
+http://api.example.com/device-management/managed-devices/{id}/scripts/{id}
+2)Do not use trailing forward slash (/) in URIs
+As the last character within a URI’s path, a forward slash (/) adds no semantic value and may cause confusion. It’s better to drop them completely.
+http://api.example.com/device-management/managed-devices/
+http://api.example.com/device-management/managed-devices 	/*This is much better version*/
+3)Use hyphens (-) to improve the readability of URIs
+To make your URIs easy for people to scan and interpret, use the hyphen (-) character to improve the readability of names in long path segments.
+http://api.example.com/inventory-management/managed-entities/{id}/install-script-location  //More readable
+http://api.example.com/inventory-management/managedEntities/{id}/installScriptLocation  //Less readable
+4)Do not use underscores ( _ )
+It’s possible to use an underscore in place of a hyphen to be used as separator – But depending on the application’s font, it’s possible that the underscore (_) character can either get partially obscured or completely hidden in some browsers or screens.
+To avoid this confusion, use hyphens (-) instead of underscores ( _ ).
+http://api.example.com/inventory-management/managed-entities/{id}/install-script-location  //More readable
+http://api.example.com/inventory_management/managed_entities/{id}/install_script_location  //More error prone
+5)Use lowercase letters in URIs
+When convenient, lowercase letters should be consistently preferred in URI paths.
+RFC 3986 defines URIs as case-sensitive except for the scheme and host components. e.g.
+http://api.example.org/my-folder/my-doc  //1
+HTTP://API.EXAMPLE.ORG/my-folder/my-doc  //2
+http://api.example.org/My-Folder/my-doc  //3
+In above examples, 1 and 2 are same but 3 is not as it uses My-Folder in capital letters.
+6)Do not use file extenstions
+File extensions look bad and do not add any advantage. Removing them decrease the length of URIs as well. No reason to keep them.
+Apart from above reason, if you want to highlight the media type of API using file extenstion then you should rely on the media type, as communicated through the Content-Type header, to determine how to process the body’s content.
+http://api.example.com/device-management/managed-devices.xml  /*Do not use it*/
+http://api.example.com/device-management/managed-devices 	/*This is correct URI*/
+C)Never use CRUD function names in URIs
+URIs should not be used to indicate that a CRUD function is performed. URIs should be used to uniquely identify resources and not any action upon them. HTTP request methods should be used to indicate which CRUD function is performed.
+HTTP GET http://api.example.com/device-management/managed-devices  //Get all devices
+HTTP POST http://api.example.com/device-management/managed-devices  //Create new Device
+HTTP GET http://api.example.com/device-management/managed-devices/{id}  //Get device for given Id
+HTTP PUT http://api.example.com/device-management/managed-devices/{id}  //Update device for given Id
+HTTP DELETE http://api.example.com/device-management/managed-devices/{id}  //Delete device for given Id
+D)Use query component to filter URI collection
+Many times, you will come across requirements where you will need a collection of resources sorted, filtered or limited based on some certain resource attribute. For this, do not create new APIs – rather enable sorting, filtering and pagination capabilities in resource collection API and pass the input parameters as query parameters. e.g.
+http://api.example.com/device-management/managed-devices
+http://api.example.com/device-management/managed-devices?region=USA
+http://api.example.com/device-management/managed-devices?region=USA&brand=XYZ
+http://api.example.com/device-management/managed-devices?region=USA&brand=XYZ&sort=installation-date
