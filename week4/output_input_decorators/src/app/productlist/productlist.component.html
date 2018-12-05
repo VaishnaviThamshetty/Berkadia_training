@@ -1,0 +1,11 @@
+
+<table id="Novels">
+  <tr>
+    <th>Novels</th>
+    <th>Add To Cart</th>
+  </tr>
+  <tr *ngFor="let num of Novels">
+      <td>{{num}}</td>
+      <td><button class="button" (click)="count_value()">Buy</button></td>
+  </tr> 
+</table>
