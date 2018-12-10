@@ -1,0 +1,31 @@
+<div align="center">
+    <body bgcolor=coral>
+    <h1>Employee Details</h1>
+    <button (click)="showData()" >Display data</button>
+    <br /> <br /> 
+    &nbsp;
+      <br /><br />
+      <div class="table-responsive">
+                <table class="table table-bordered table-dark">
+      <tr *ngFor="let d of dataset;let i = index; let even = even; let odd = odd; let second = second"
+        [ngClass]="{oddclass: odd, evenclass: even , secondclass:second}">
+        <td>
+          {{i+1}}
+        </td>
+        <td>
+          {{d.name}}
+        </td>
+        <td>
+          {{d.id}}
+        </td>
+        <td>
+          {{d.phonenumber}}
+        </td>
+        <td>
+          {{d.Yearofjoining}}
+        </td>
+      </tr>
+    </table>
+    </div>
+    </body>
+  </div>
