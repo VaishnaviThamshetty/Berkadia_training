@@ -1,0 +1,14 @@
+.button1 
+{
+    font-size:1em;background:grey;color: black
+}
+.second
+{
+    font-size: 2em;color: rgb(34, 126, 34)
+}
+.oddclass{
+    background-color:rgb(199, 175, 236);
+}
+.evenclass{
+  background-color:  rgb(245, 180, 218);
+}
