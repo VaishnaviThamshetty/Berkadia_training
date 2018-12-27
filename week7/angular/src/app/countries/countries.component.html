@@ -1,0 +1,20 @@
+<body style="background-color:lightcyan;">
+<h3 align="center">Air quality of various countries</h3><br>
+<div class="container" *ngIf=contDetails>
+    <div class="row">
+        <div class="col-md-4" *ngFor="let cont of contDetails">
+            <div class="card mb-4 box-shadow"> 
+                <div class="style2">
+                    <h3 class="my-0 font-weight-normal">{{cont.name}}</h3>
+                </div>
+                <div class="style1">
+                        <p>Country Code: {{cont.code}}</p>
+                        <p>count: {{cont.count}}</p>
+                        <p>Number of cities: {{cont.cities}}</p>
+                        <p>locations: {{cont.locations}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
