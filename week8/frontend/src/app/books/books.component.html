@@ -1,0 +1,23 @@
+<div class="conatiner" >
+  <div align ='center'>
+      <p></p>
+        <h5><em>SELECT UR BOOKS..AND HAVE FUN!!!!!!</em></h5>
+      </div>
+  <div>
+      <img src="assets/images/book.jpg" width="100%" height="80%">
+  </div>
+<div class="row mt-5">
+<div class="col-md-4 mb-3" *ngFor="let num of books">
+  <div class="card text-center">
+    <div class="card-body">
+      <h5 class="card-title">{{num.name}}</h5>
+      <p class="card-text">{{num.type}}</p>
+      <a href="/booking" class="btn btn-primary">Buy Books</a>
+    </div>
+    <div class="card-footer text-muted">
+      {{event.date | date:'shortDate'}}
+    </div>
+  </div>
+</div>
+</div>
+</div>
