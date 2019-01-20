@@ -1,0 +1,42 @@
+
+<body style="background-color:lightcyan;">
+    <script>
+        function yesnoCheck() {
+    if (document.getElementById('yesCheck').checked) {
+        alert("correct");
+        document.getElementById('ifYes').style.visibility = 'visible';
+    }
+    else document.getElementById('noCheck').style.visibility = 'hidden';
+
+}
+    </script>
+    
+<h3 align="center">All the questions</h3><br>
+<div class="container" *ngIf=quesDetails>
+    <div class="row">
+        <div class="col-md-4" *ngFor="let ques of quesDetails">
+            <div class="card mb-4 box-shadow"> 
+                <div class="style2">
+                    <h3 class="my-0 font-weight-normal"></h3>
+                </div>
+                <div class="style1">
+                        <p>Question: {{ques.question}}</p>
+                        <p>Select answer from the below options</p>
+            <input type="radio" onclick="javascript:yesnoCheck();" name="yesno" id="noCheck">  {{ques.incorrect_answers[0]}}
+            <br>
+            <input type="radio" onclick="javascript:yesnoCheck();" name="yesno" id="noCheck">  {{ques.incorrect_answers[1]}}
+            <br>
+            <input type="radio" onclick="javascript:yesnoCheck();" name="yesno" id="noCheck">  {{ques.incorrect_answers[2]}}
+            <br>
+             <input type="radio" onclick="javascript:yesnoCheck();" name="yesno" id="yesCheck">{{ques.correct_answer}}
+             <br>
+                    <input type="submit" value="Submit">
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<li class="nav-item">
+        <a class="nav-link" routerLink="/end" routerLinkActive="active">End Test</a>
+      </li>
+</body>
